@@ -23,5 +23,10 @@ namespace Backend.CodersHub.Services.UserServices
             EmailAddress = emailAddress;
             Password = password;
         }
+
+        public UserDto()
+        {
+            
+        }
     }
 }

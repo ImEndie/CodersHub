@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CodersHub.Api.Controllers
 {
+    //[ApiController]
+    //[Route("api/[controller]")]
     public class UserController : Controller
     {
         private readonly IUserService _userService;
@@ -40,7 +42,7 @@ namespace CodersHub.Api.Controllers
             return _userService.GetUser(token);
         }
 
-        [HttpGet]
+        [HttpGet("")]
         public List<User> GetUsers()
         {
             return _userService.GetUsers();
