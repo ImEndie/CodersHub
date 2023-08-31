@@ -10,9 +10,10 @@ namespace Backend.CodersHub.Services.UserServices.Concrete
     public interface IUserService
     {
         Guid AddUser(UserDto userDto);
-        void UpdateUser(Guid token, User user);
+        void UpdateUser(Guid token,string currentPassword, UserDto userDto);
         void DeleteUser(Guid token);
         User GetUser(Guid token);
+        User GetUser(string emailAddress, string password);
         List<User> GetUsers();
     }
 }

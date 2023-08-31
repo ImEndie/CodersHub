@@ -1,4 +1,5 @@
 ﻿using Backend.CodersHub.Models;
+using Backend.CodersHub.Services.UserServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +56,16 @@ namespace Backend.CodersHub.Files
             return users.FirstOrDefault(user => user.Token == token);
         }
 
-        public void UpdateUser(Guid token, User user)
+        public User GetUser(string emailAddress, string password)
+        {
+            var allText = File.ReadAllText(_usersPath);
+            if (allText.Length == 0) return null;
+
+            var users = JsonSerializer.Deserialize<List<User>>(allText);
+            return users.FirstOrDefault(user => (user.EmailAddress == emailAddress && user.Password == password));
+        }
+
+        public void UpdateUser(Guid token, UserDto user)
         {
             var allText = File.ReadAllText(_usersPath);
             if (allText.Length == 0) return;

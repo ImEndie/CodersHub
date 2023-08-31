@@ -1,4 +1,5 @@
 ﻿using Backend.CodersHub.Models;
+using Backend.CodersHub.Services.UserServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,9 @@ namespace Backend.CodersHub.Files
         /// </summary>
         /// <param name="token"></param>
         /// <param name="user"></param>
-        void UpdateUser(Guid token, User user);
+        void UpdateUser(Guid token, UserDto user);
         List<User> GetUsers();
+
+        User GetUser(string emailAddress, string password);
     }
 }

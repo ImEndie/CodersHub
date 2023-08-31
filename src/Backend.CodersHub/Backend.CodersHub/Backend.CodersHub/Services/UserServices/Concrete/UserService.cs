@@ -23,7 +23,7 @@ namespace Backend.CodersHub.Services.UserServices.Concrete
                 User(userDto.FirstName,
                 userDto.LastName,
                 userDto.Bio,
-                userDto.Email,
+                userDto.EmailAddress,
                 userDto.Password);
 
             return _fileContext.AddUser(user);
@@ -38,9 +38,19 @@ namespace Backend.CodersHub.Services.UserServices.Concrete
         {
             return _fileContext.GetUser(token);
         }
-
-        public void UpdateUser(Guid token, User user)
+        public User GetUser(string emailAddress, string password)
         {
+            return _fileContext.GetUser(emailAddress, password);
+        }
+
+        public void UpdateUser(Guid token, string currentPassword, UserDto user)
+        {
+            var foundedUser = _fileContext.GetUser(token);
+            if (foundedUser.Password != currentPassword)
+            {
+                throw new Exception("Old password is not valid");
+            }
+
             _fileContext.UpdateUser(token, user);
         }
 

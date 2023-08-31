@@ -17,15 +17,15 @@ namespace CodersHub.Api.Controllers
         }
 
         [HttpPost("user")]
-        public Guid AddUser([FromBody] UserDto user)
+        public Guid AddUser([FromQuery] UserDto user)
         {
             return _userService.AddUser(user);
         }
 
-        [HttpPut("token, user")]
-        public void UpdateUser([FromBody] Guid token, User user)
+        [HttpPost("token, user")]
+        public void UpdateUser([FromBody] Guid token, string currentPassword, UserDto userDto)
         {
-            _userService.UpdateUser(token, user);
+            _userService.UpdateUser(token, currentPassword, userDto);
         }
 
         [HttpDelete("token")]
