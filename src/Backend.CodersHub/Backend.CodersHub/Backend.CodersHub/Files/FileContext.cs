@@ -11,7 +11,17 @@ namespace Backend.CodersHub.Files
 {
     public class FileContext : IFileContext
     {
-        private readonly string _usersPath = "D:\\PROJECTS\\CodersHub\\src\\Backend.CodersHub\\Backend.CodersHub\\Backend.CodersHub\\DataLayer\\users.json";
+        private readonly string _usersPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.ToString(), "Backend.CodersHub", "Backend.CodersHub", "DataLayer", "users.json");
+        private readonly string _postsPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.ToString(), "Backend.CodersHub", "Backend.CodersHub", "DataLayer", "posts.json");
+
+        public FileContext()
+        {
+            if (!File.Exists(_usersPath))
+                File.Create(_usersPath).Close();
+            if (!File.Exists(_postsPath))
+                File.Create(_postsPath).Close();
+        }
+
         public Guid AddUser(User user)
         {
             var allText = File.ReadAllText(_usersPath);
@@ -85,10 +95,6 @@ namespace Backend.CodersHub.Files
             WriteAllText(_usersPath, JsonSerializer.Serialize(users));
         }
 
-        private void WriteAllText(string path, string text)
-        {
-            File.WriteAllText(path, text);
-        }
 
         public List<User> GetUsers()
         {
@@ -97,6 +103,14 @@ namespace Backend.CodersHub.Files
 
             var users = JsonSerializer.Deserialize<List<User>>(allText);
             return users.Where(x => !x.IsDeleted).ToList();
+        }
+
+
+
+
+        private void WriteAllText(string path, string text)
+        {
+            File.WriteAllText(path, text);
         }
     }
 }

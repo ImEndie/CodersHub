@@ -34,8 +34,19 @@ namespace Backend.CodersHub.Files
         /// <param name="token"></param>
         /// <param name="user"></param>
         void UpdateUser(Guid token, UserDto user);
+
+        /// <summary>
+        /// Hech narsa qabul qilmaydi
+        /// </summary>
+        /// <returns>Barcha userlarni qaytaradi</returns>
         List<User> GetUsers();
 
+        /// <summary>
+        /// emailaddress va password qabul qiladi
+        /// </summary>
+        /// <param name="emailAddress"></param>
+        /// <param name="password"></param>
+        /// <returns>topilgan userni qaytaradi aks xolda null</returns>
         User GetUser(string emailAddress, string password);
     }
 }

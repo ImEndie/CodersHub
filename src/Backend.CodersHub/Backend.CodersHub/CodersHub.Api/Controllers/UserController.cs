@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CodersHub.Api.Controllers
 {
-    //[ApiController]
-    //[Route("api/[controller]")]
+    [ApiController]
+    [Route("api/[controller]")]
     public class UserController : Controller
     {
         private readonly IUserService _userService;
@@ -19,30 +19,30 @@ namespace CodersHub.Api.Controllers
         }
 
         [HttpPost("user")]
-        public Guid AddUser([FromQuery] UserDto user)
+        public Guid AddUser(UserDto user)
         {
             return _userService.AddUser(user);
         }
 
         [HttpPost("token, user")]
-        public void UpdateUser([FromBody] Guid token, string currentPassword, UserDto userDto)
+        public void UpdateUser(Guid token, string currentPassword, UserDto userDto)
         {
             _userService.UpdateUser(token, currentPassword, userDto);
         }
 
         [HttpDelete("token")]
-        public void DeleteUser([FromBody] Guid token)
+        public void DeleteUser(Guid token)
         {
             _userService.DeleteUser(token);
         }
 
         [HttpGet("token")]
-        public User GetUser([FromBody] Guid token)
+        public User GetUser(Guid token)
         {
             return _userService.GetUser(token);
         }
 
-        [HttpGet("")]
+        [HttpGet]
         public List<User> GetUsers()
         {
             return _userService.GetUsers();

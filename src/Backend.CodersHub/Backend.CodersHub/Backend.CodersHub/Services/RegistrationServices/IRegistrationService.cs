@@ -9,5 +9,7 @@ namespace Backend.CodersHub.Services.RegistrationServices
     public interface IRegistrationService
     {
         Guid Register(string firstName, string lastName, string bio, string emailAddress, string password);
+        Guid Login(string emailAddress, string password);
+    
     }
 }
