@@ -72,9 +72,19 @@ namespace Backend.CodersHub.Files
         {
             var posts = GetPosts();
             var user = GetUser(token);
-            if(posts.Count == 0) return new List<BlogPost>();
+            if (posts.Count == 0) return new List<BlogPost>();
 
             return posts.Where(post => post.UserId == user.Id).ToList();
+        }
+
+        public List<BlogPost> SearchPost(string keyword)
+        {
+            var posts = GetPosts();
+            if (posts.Count == 0) return posts;
+
+            return posts.Where(post =>
+                post.Title.Contains(keyword, StringComparison.OrdinalIgnoreCase) ||
+                post.Body.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
         }
     }
 }

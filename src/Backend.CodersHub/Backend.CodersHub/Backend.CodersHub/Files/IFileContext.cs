@@ -79,8 +79,19 @@ namespace Backend.CodersHub.Files
         /// <returns></returns>
         public List<BlogPost> GetPosts();
 
-
+        /// <summary>
+        /// unique bo'lgan token orqali userning postlarini qaytaradi
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public List<BlogPost> GetUserPosts(Guid token);
+
+        /// <summary>
+        /// keyword orqali search qiladi
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
+        public List<BlogPost> SearchPost(string keyword);
     }
 
 }

@@ -51,5 +51,11 @@ namespace Backend.CodersHub.Services.BlogPostServices.Concrete
         {
             return _fileContext.GetPosts();
         }
+
+        public List<BlogPost> Search(string keyword)
+        {
+            if (string.IsNullOrWhiteSpace(keyword)) throw new Exception("Search keyword is null or whitespace");
+            return _fileContext.SearchPost(keyword);
+        }
     }
 }

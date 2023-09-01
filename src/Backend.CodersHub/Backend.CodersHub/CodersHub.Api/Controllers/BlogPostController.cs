@@ -47,10 +47,16 @@ namespace CodersHub.Api.Controllers
             _blogPostService.Update(id, post);
         }
 
-        [HttpGet()]
+        [HttpGet("GetAllPosts")]
         public List<BlogPost> GetPosts()
         {
             return _blogPostService.GetPosts();
+        }
+
+        [HttpGet("Search")]
+        public List<BlogPost> Search(string keyword)
+        {
+            return _blogPostService.Search(keyword);
         }
     }
 }

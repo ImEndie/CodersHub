@@ -15,7 +15,7 @@ namespace Backend.CodersHub.Services.BlogPostServices.Concrete
         void Delete(Guid id);
         List<BlogPost> GetPosts();
         List<BlogPost> GetUserPosts(Guid token);
-
+        List<BlogPost> Search(string keyword);
 
     }
 }
