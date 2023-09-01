@@ -18,31 +18,31 @@ namespace CodersHub.Api.Controllers
             _userService = new UserService();
         }
 
-        [HttpPost("user")]
+        [HttpPost("AddUser")]
         public Guid AddUser(UserDto user)
         {
             return _userService.Add(user);
         }
 
-        [HttpPost("token, user")]
+        [HttpPost("UpdateUser")]
         public void UpdateUser(Guid token, string currentPassword, UserDto userDto)
         {
             _userService.Update(token, currentPassword, userDto);
         }
 
-        [HttpDelete("token")]
+        [HttpDelete("DeleteUser")]
         public void DeleteUser(Guid token)
         {
             _userService.Delete(token);
         }
 
-        [HttpGet("token")]
+        [HttpGet("GetUser")]
         public User GetUser(Guid token)
         {
             return _userService.Get(token);
         }
 
-        [HttpGet]
+        [HttpGet("GetUsers")]
         public List<User> GetUsers()
         {
             return _userService.GetUsers();

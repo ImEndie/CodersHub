@@ -16,32 +16,32 @@ namespace CodersHub.Api.Controllers
             _blogPostService = new BlogPostService();
         }
 
-        [HttpPost("usertoken, post")]
+        [HttpPost("Add")]
         public Guid Add(Guid token, BlogPostDto post)
         {
             return _blogPostService.Add(token, post);
         }
 
-        [HttpDelete("post id")]
+        [HttpDelete("Delete")]
         public void Delete(Guid id)
         {
             _blogPostService.Delete(id);
         }
 
-        [HttpGet("post id")]
+        [HttpGet("GetById")]
         public BlogPost Get(Guid id)
         {
             return _blogPostService.Get(id);
         }
 
-        [HttpGet("user token")]
+        [HttpGet("GetUserPosts")]
         public List<BlogPost> GetUserPosts(Guid token)
         {
             var userPosts = _blogPostService.GetUserPosts(token);
             return userPosts;
         }
 
-        [HttpPost("post id, yangi post")]
+        [HttpPost("Update")]
         public void Update(Guid id, BlogPostDto post)
         {
             _blogPostService.Update(id, post);

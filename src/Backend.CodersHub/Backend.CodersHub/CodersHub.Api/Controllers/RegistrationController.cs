@@ -14,13 +14,13 @@ namespace CodersHub.Api.Controllers
             _registrationService = new RegistrationService();
         }
 
-        [HttpPost("firstname, lastname, bio, email address, password")]
+        [HttpPost("Register")]
         public Guid Register(string firstName, string lastName, string bio, string emailAddress, string password)
         {
             return _registrationService.Register(firstName, lastName, bio, emailAddress, password);
         }
 
-        [HttpPost("email address, password")]
+        [HttpPost("Login")]
         public Guid Login(string emailAddress, string password)
         {
             return _registrationService.Login(emailAddress, password);
