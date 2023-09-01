@@ -21,25 +21,25 @@ namespace CodersHub.Api.Controllers
         [HttpPost("user")]
         public Guid AddUser(UserDto user)
         {
-            return _userService.AddUser(user);
+            return _userService.Add(user);
         }
 
         [HttpPost("token, user")]
         public void UpdateUser(Guid token, string currentPassword, UserDto userDto)
         {
-            _userService.UpdateUser(token, currentPassword, userDto);
+            _userService.Update(token, currentPassword, userDto);
         }
 
         [HttpDelete("token")]
         public void DeleteUser(Guid token)
         {
-            _userService.DeleteUser(token);
+            _userService.Delete(token);
         }
 
         [HttpGet("token")]
         public User GetUser(Guid token)
         {
-            return _userService.GetUser(token);
+            return _userService.Get(token);
         }
 
         [HttpGet]

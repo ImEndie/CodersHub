@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CodersHub.Api.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class RegistrationController : Controller
     {
         private readonly IRegistrationService _registrationService;

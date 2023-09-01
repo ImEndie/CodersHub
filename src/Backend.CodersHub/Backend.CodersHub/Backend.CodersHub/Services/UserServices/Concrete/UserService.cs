@@ -17,7 +17,7 @@ namespace Backend.CodersHub.Services.UserServices.Concrete
             _fileContext = new FileContext();
         }
 
-        public Guid AddUser(UserDto userDto)
+        public Guid Add(UserDto userDto)
         {
             var user = new
                 User(userDto.FirstName,
@@ -29,21 +29,21 @@ namespace Backend.CodersHub.Services.UserServices.Concrete
             return _fileContext.AddUser(user);
         }
 
-        public void DeleteUser(Guid token)
+        public void Delete(Guid token)
         {
             _fileContext.DeleteUser(token);
         }
 
-        public User GetUser(Guid token)
+        public User Get(Guid token)
         {
             return _fileContext.GetUser(token);
         }
-        public User GetUser(string emailAddress, string password)
+        public User Get(string emailAddress, string password)
         {
             return _fileContext.GetUser(emailAddress, password);
         }
 
-        public void UpdateUser(Guid token, string currentPassword, UserDto user)
+        public void Update(Guid token, string currentPassword, UserDto user)
         {
             var foundedUser = _fileContext.GetUser(token);
             if (foundedUser.Password != currentPassword)

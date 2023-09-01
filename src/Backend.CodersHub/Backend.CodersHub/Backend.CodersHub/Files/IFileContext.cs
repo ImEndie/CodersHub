@@ -48,5 +48,39 @@ namespace Backend.CodersHub.Files
         /// <param name="password"></param>
         /// <returns>topilgan userni qaytaradi aks xolda null</returns>
         User GetUser(string emailAddress, string password);
+
+        /// <summary>
+        /// faylga yangi blogpost qo'shadi
+        ///</summary>
+        Guid AddPost(BlogPost blogPost);
+
+        ///<summary>
+        ///id orqali topib post ni o'chiradi
+        ///</summary>
+        void DeletePost(Guid id);
+
+        /// <summary>
+        /// id orqali postni topib berilgan blogPostDto modeli bo'yicha update qiladi
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="blogPostDto"></param>
+        void UpdatePost(Guid id, BlogPostDto blogPostDto);
+
+        /// <summary>
+        /// Id orqali postni topib qaytaradi
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public BlogPost GetPost(Guid id);
+
+        /// <summary>
+        /// barcha postlarni qaytaradi
+        /// </summary>
+        /// <returns></returns>
+        public List<BlogPost> GetPosts();
+
+
+        public List<BlogPost> GetUserPosts(Guid token);
     }
+
 }

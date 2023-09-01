@@ -1,4 +1,5 @@
 using Backend.CodersHub.Files;
+using Backend.CodersHub.Services.BlogPostServices.Concrete;
 using Backend.CodersHub.Services.RegistrationServices;
 using Backend.CodersHub.Services.UserServices.Concrete;
 
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IFileContext, FileContext>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IRegistrationService, RegistrationService>();
+builder.Services.AddScoped<IBlogPostService, BlogPostService>();
 
 
 //// temp adding cors

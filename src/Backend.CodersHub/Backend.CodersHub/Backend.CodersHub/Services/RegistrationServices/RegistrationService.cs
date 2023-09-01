@@ -29,12 +29,12 @@ namespace Backend.CodersHub.Services.RegistrationServices
             if (!_validator.IsUniqueEmail(emailAddress, _userService.GetUsers())) throw new Exception("Email address is already used");
 
             var userDto = new UserDto(firstName, lastName, bio, emailAddress, password);
-            return _userService.AddUser(userDto);
+            return _userService.Add(userDto);
         }
 
         public Guid Login(string emailAddress, string password)
         {
-            var user = _userService.GetUser(emailAddress, password);
+            var user = _userService.Get(emailAddress, password);
             if (user != null)
             {
                 return user.Token;
